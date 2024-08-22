@@ -1,6 +1,13 @@
 #include <iostream>
+#include <string>
+#include <filesystem>
 
-using namespace std;
+namespace hm = std:: filesystem;
+
+void displayMenu();
+void displayFiles();
+void createDirectory();
+void changeDirectory();
 
 int main()
 {
