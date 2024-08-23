@@ -36,3 +36,12 @@ int main()
   
     return 0;
 }
+
+void displayMenu(){
+  std::cout<<"\n MAIN MENU \n";
+  std::cout<<"1. To Display List of Files \n";
+  std::cout<<"2. To Create New Directory \n";
+  std::cout<<"3. To Change The Working Directory \n";
+  std::cout<<"4. Exit \n";
+  
+}
