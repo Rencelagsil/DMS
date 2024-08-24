@@ -45,3 +45,26 @@ void displayMenu(){
   std::cout<<"4. Exit \n";
   
 }
+
+void displayFiles(){
+  int choice1;
+  std::string extension, nameFilter;
+
+  std::cout << "\nLIST FILES DETAIL\n";
+  std::cout << "1. List All Files\n";
+  std::cout << "2. List Of Extension Files\n";
+  std::cout << "3. List Of Name Wise\n";
+  std::cout << choice1;
+
+  switch (choice1) {
+    case 1:
+    std::cout <<"\n List Of All Files: \n;
+      for (const auto & entry: hm::directoty_iterator(hm::current_path())) {
+          if (hm:: is_regular_file(entry.status())) {
+              std:: cout<< entry.path().filename().string() << std::endl;
+      }
+      }
+break;
+
+  }
+}
