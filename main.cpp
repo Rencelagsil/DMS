@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iostream>
 #include <filesystem>
 
 namespace hm = std:: filesystem;
@@ -58,6 +59,7 @@ void displayFiles(){
   switch (choice1) {
     case 1:
     std::cout <<"\n List Of All Files: \n;
+      
       for (const auto & entry: hm::directoty_iterator(hm::current_path())) {
           if (hm:: is_regular_file(entry.status())) {
               std:: cout<< entry.path().filename().string() << std::endl;
@@ -79,7 +81,7 @@ std::cout <<" Enter the name filter:;
 std::cin>> nameFilter;
 std::cout << " \n List of files with name containing " << nameFilter;
       for (const auto & entry: hm::directoty_iterator(hm::current_path())) {
-          if (hm:: is_regular_file(entry.status()) && entry.path().filename().string(). find(nameFilter) != std::string::npos )  {
+          if (hm:: is_regular_file(entry.status()) && entry.path().filename().string(). find(nameFilter) != std::string::npos ) {
               std:: cout<< entry.path().filename().strng() << std::endl;
           }
               
@@ -93,7 +95,16 @@ default:
 
 void creatDirectory(){
   std:: string dirName;
-  std::cout << "Enter The Directory Name: ";
+  std:: cout << "Enter The Directory Name: ";
+  std:: cin >> dirName;
+
+  if (hm::create_directory(dirName)) {
+    std:: cout << dirName << "Direcrtory Successfully Created. " << std::endl;
+    
+  } else {
+    std:: cout << "Failed to create directory. It may already exist, TRY AGAIN! " << std::endl;
+  }
+  std:: cout << "Please press any to continue..";
 }
 
 
