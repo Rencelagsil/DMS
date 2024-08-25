@@ -60,9 +60,9 @@ void displayFiles(){
   case 1:
     std::cout <<"\n List Of All Files: \n";
       
-      for (const auto & entry: hm::directoty_iterator(hm::current_path())) {
-          if (hm:: is_regular_file(entry.status())) {
-              std:: cout<< entry.path().filename().string() << std::endl;
+      for (const auto& entry : hm::directory_iterator(hm::current_path())) {
+                if (hm::is_regular_file(entry.status())) {
+                    std::cout << entry.path().filename().string() << std::endl;
       }
       }
 break;
@@ -70,9 +70,10 @@ case 2:
 std::cout <<" Enter the file extension:";
 std::cin>> extension;
 std::cout << " \n List of file extension " << extension;
-      for (const auto & entry: hm::directoty_iterator(hm::current_path())) {
-          if (hm:: is_regular_file(entry.status()) && entry.path().extension() == extension)  {
-              std:: cout<< entry.path().filename().string() << std::endl;
+     
+ for (const auto& entry : hm::directory_iterator(hm::current_path())) {
+                if (hm::is_regular_file(entry.status()) && entry.path().extension() == extension) {
+                    std::cout << entry.path().filename().string() << std::endl;
           }
   }
   break;
@@ -80,9 +81,9 @@ case 3:
 std::cout <<" Enter the name filter:"  ;
 std::cin>> nameFilter;
 std::cout << " \n List of files with name containing " << nameFilter;
-      for (const auto & entry: hm::directoty_iterator(hm::current_path())) {
-          if (hm:: is_regular_file(entry.status()) && entry.path().filename().string(). find(nameFilter) != std::string::npos ) {
-              std:: cout<< entry.path().filename().strng() << std::endl;
+      for (const auto& entry : hm::directory_iterator(hm::current_path())) {
+                if (hm::is_regular_file(entry.status()) && entry.path().extension() == extension) {
+                    std::cout << entry.path().filename().string() << std::endl;
           }
               
   }
@@ -93,34 +94,31 @@ default:
   std::cout<< "Press any key to continue. ";
 }
 
-void creatDirectory(){
-  std:: string dirName;
-  std:: cout << "Enter The Directory Name: ";
-  std:: cin >> dirName;
+void createDirectory() {
+    std::string dirName;
+    std::cout << "Enter the Directory name: ";
+    std::cin >> dirName;
 
-  if (hm::create_directory(dirName)) {
-    std:: cout << dirName << "Direcrtory Successfully Created. " << std::endl;
-    
-  } else {
-    std:: cout << "Failed to create directory. It may already exist, TRY AGAIN! " << std::endl;
-  }
-  std:: cout << "Please press any to continue..";
+    if (hm::create_directory(dirName)) {
+        std::cout << dirName << " Directory Successfully Created." << std::endl;
+    } else {
+        std::cout << "Failed to create directory. It may already exist or you don't have permission." << std::endl;
 }
 
-void changeDirectory(){
-  int choice2;
-  std:: string dirName;
-  hm::path currentDir = hm::current_path();
+void changeDirectory() {
+    int choice2;
+    std::string dirName;
+    hm::path currentDir = hm::current_path();
 
-  std::cout << "Current Directory: " << currentDir.string() << std::endl;
+    std::cout << "Current Directory: " << currentDir.string() << std::endl;
     std::cout << "\nChange Directory\n";
     std::cout << "1. Step by Step Backward\n";
     std::cout << "2. Goto Root Directory\n";
     std::cout << "3. Forward Directory\n";
     std::cout << "Enter the Number: ";
     std::cin >> choice2;
-}
-switch (subChoice) {
+
+  switch (subChoice) {
   
    case 1:
       if (currentDir.has_parent_path()) {
@@ -153,3 +151,5 @@ switch (subChoice) {
 
     std::cout << "Press any to continue.";
 }
+
+
