@@ -123,7 +123,7 @@ void changeDirectory(){
 switch (subChoice) {
   
    case 1:
-      if (currentDir.hasparent_path()) {
+      if (currentDir.has_parent_path()) {
           hm::current_path(currentDir.parent_path());
             std::cout << "Moved one directory back to: " << hm::current_path().string() << std::endl;
       } else {
@@ -132,23 +132,23 @@ switch (subChoice) {
       break;
   
    case 2:
-      hm::current_path(currentDir.rootpath());
+      hm::current_path(currentDir.root_path());
         std::cout << "Moved to root directory: " << hm::current_path().string() << std::endl;
-      break:
+      break;
         
     case 3:
-      std::cout << "Please enter the Directory Name: "
+      std::cout << "Please enter the Directory Name: ";
       std::cin >> dirName;
-        if (hm::exists(dirName) && hm::isdirectory(dirName)) {
+        if (hm::exists(dirName) && hm::is_directory(dirName)) {
              hm::current_path(dirName);
               std::cout << "Moved to directory: " << hm::current_path().string() << std::endl;
         } else {
-            std::cout << "Directory does not exist." << std::endl
+            std::cout << "Directory does not exist." << std::endl;
           }
         break;
   
-        default;
-           std::cout << "Invalid choice!" << std::endl;
+  default:
+      std::cout << "Invalid choice!" << std::endl;
     }
 
     std::cout << "Press any to continue.";
