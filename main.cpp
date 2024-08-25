@@ -104,9 +104,10 @@ void createDirectory() {
     } else {
         std::cout << "Failed to create directory. It may already exist or you don't have permission." << std::endl;
 }
+}
 
 void changeDirectory() {
-    int choice2;
+   int choice2;
     std::string dirName;
     hm::path currentDir = hm::current_path();
 
@@ -118,8 +119,8 @@ void changeDirectory() {
     std::cout << "Enter the Number: ";
     std::cin >> choice2;
 
-  switch (subChoice) {
-  
+    switch(choice2) {
+
    case 1:
       if (currentDir.has_parent_path()) {
           hm::current_path(currentDir.parent_path());
@@ -128,12 +129,12 @@ void changeDirectory() {
        std::cout << "Already at the root directory." << std::endl;
       }
       break;
-  
+
    case 2:
       hm::current_path(currentDir.root_path());
         std::cout << "Moved to root directory: " << hm::current_path().string() << std::endl;
       break;
-        
+
     case 3:
       std::cout << "Please enter the Directory Name: ";
       std::cin >> dirName;
@@ -144,12 +145,10 @@ void changeDirectory() {
             std::cout << "Directory does not exist." << std::endl;
           }
         break;
-  
+
   default:
       std::cout << "Invalid choice!" << std::endl;
-    }
-
+}
+   
     std::cout << "Press any to continue.";
 }
-
-
