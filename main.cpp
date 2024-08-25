@@ -57,7 +57,7 @@ void displayFiles(){
   std::cout << choice1;
 
   switch (choice1) {
-    case 1:
+  case 1:
     std::cout <<"\n List Of All Files: \n;
       
       for (const auto & entry: hm::directoty_iterator(hm::current_path())) {
@@ -110,7 +110,7 @@ void creatDirectory(){
 void changeDirectory(){
   int choice2;
   std:: string dirName;
-  hm:: path currentDir = hm::current_path();
+  hm::path currentDir = hm::current_path();
 
   std::cout << "Current Directory: " << currentDir.string() << std::endl;
     std::cout << "\nChange Directory\n";
@@ -120,5 +120,36 @@ void changeDirectory(){
     std::cout << "Enter the Number: ";
     std::cin >> choice2;
 }
+switch (subChoice) {
+  
+   case 1:
+      if (currentDir.hasparent_path()) {
+          hm::current_path(currentDir.parent_path());
+            std::cout << "Moved one directory back to: " << hm::current_path().string() << std::endl;
+      } else {
+       std::cout << "Already at the root directory." << std::endl;
+      }
+      break;
+  
+   case 2:
+      hm::current_path(currentDir.rootpath());
+        std::cout << "Moved to root directory: " << hm::current_path().string() << std::endl;
+      break:
+        
+    case 3:
+      std::cout << "Please enter the Directory Name: "
+      std::cin >> dirName;
+        if (hm::exists(dirName) && hm::isdirectory(dirName)) {
+             hm::current_path(dirName);
+              std::cout << "Moved to directory: " << hm::current_path().string() << std::endl;
+        } else {
+            std::cout << "Directory does not exist." << std::endl
+          }
+        break;
+  
+        default;
+           std::cout << "Invalid choice!" << std::endl;
+    }
 
-
+    std::cout << "Press any to continue.";
+}
