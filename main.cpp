@@ -67,7 +67,7 @@ break;
 case 2: 
 std::cout <<" Enter the file extension:;
 std::cin>> extension;
-std::cout << " \n List of file extension " << extension << " :\n;
+std::cout << " \n List of file extension " << extension;
       for (const auto & entry: hm::directoty_iterator(hm::current_path())) {
           if (hm:: is_regular_file(entry.status()) && entry.path().extension() == extension)  {
               std:: cout<< entry.path().filename().string() << std::endl;
@@ -77,7 +77,7 @@ std::cout << " \n List of file extension " << extension << " :\n;
 case 3:
 std::cout <<" Enter the name filter:;
 std::cin>> nameFilter;
-std::cout << " \n List of files with name containing " << nameFilter << " :\n;
+std::cout << " \n List of files with name containing " << nameFilter;
       for (const auto & entry: hm::directoty_iterator(hm::current_path())) {
           if (hm:: is_regular_file(entry.status()) && entry.path().filename().string(). find(nameFilter) != std::string::npos )  {
               std:: cout<< entry.path().filename().strng() << std::endl;
@@ -90,4 +90,10 @@ default:
 }
   std::cout<< "Press any key to continue. ";
 }
+
+void creatDirectory(){
+  std:: string dirName;
+  std::cout << "Enter The Directory Name: ";
+}
+
 
