@@ -58,7 +58,7 @@ void displayFiles(){
 
   switch (choice1) {
   case 1:
-    std::cout <<"\n List Of All Files: \n;
+    std::cout <<"\n List Of All Files: \n";
       
       for (const auto & entry: hm::directoty_iterator(hm::current_path())) {
           if (hm:: is_regular_file(entry.status())) {
@@ -67,7 +67,7 @@ void displayFiles(){
       }
 break;
 case 2: 
-std::cout <<" Enter the file extension:;
+std::cout <<" Enter the file extension:";
 std::cin>> extension;
 std::cout << " \n List of file extension " << extension;
       for (const auto & entry: hm::directoty_iterator(hm::current_path())) {
@@ -77,7 +77,7 @@ std::cout << " \n List of file extension " << extension;
   }
   break;
 case 3:
-std::cout <<" Enter the name filter:;
+std::cout <<" Enter the name filter:"  ;
 std::cin>> nameFilter;
 std::cout << " \n List of files with name containing " << nameFilter;
       for (const auto & entry: hm::directoty_iterator(hm::current_path())) {
