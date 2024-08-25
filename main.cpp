@@ -118,7 +118,7 @@ void changeDirectory(){
     std::cout << "2. Goto Root Directory\n";
     std::cout << "3. Forward Directory\n";
     std::cout << "Enter the Number: ";
-    std::cin >> choice 2;
+    std::cin >> choice2;
 }
 
 
