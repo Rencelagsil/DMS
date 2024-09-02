@@ -50,18 +50,19 @@ void displayMenu(){
   
 }
 
-void displayFiles(){
-  int choice1;
-  std::string extension, nameFilter;
+void displayFiles() {
+    int choice1;
+    std::string extension, nameFilter;
 
-  std::cout << "\nLIST FILES DETAIL\n";
-  std::cout << "1. List All Files\n";
-  std::cout << "2. List Of Extension Files\n";
-  std::cout << "3. List Of Name Wise\n";
-  std::cout << choice1;
-  std::cin.ignore();
+    std::cout << "\nLIST FILES DETAIL\n";
+    std::cout << "1. List All Files\n";
+    std::cout << "2. List Files by Extension\n";
+    std::cout << "3. List Files by Name\n";
+    std::cout << "Enter your choice: ";
+    std::cin >> choice1;
+    std::cin.ignore(); // To clear the input buffer
 
-  switch (choice1) {
+    switch (choice1) {
         case 1:
             std::cout << "\nList of All Files:\n";
             for (const auto& entry : hm::directory_iterator(hm::current_path())) {
