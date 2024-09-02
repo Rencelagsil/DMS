@@ -15,6 +15,8 @@ int main()
   do {
     displayMenu();
     std::cin >>choice;
+    std::cin.ignore();
+    
     switch(choice) {
       case 1:
       displayFiles();
@@ -28,9 +30,12 @@ int main()
       case 4:
         std::cout << "Exiting the program." << std::endl;
       break;
+      default:
+      std::cout << "Invalid choice! Please try again." << std::endl;
     }
-    std::cin.ignore();
-    std::cin.get();
+    std::cout << "Press Enter to continue...";
+        std::cin.get(); 
+
     
   } while (choice!= 4);
   
@@ -55,44 +60,41 @@ void displayFiles(){
   std::cout << "2. List Of Extension Files\n";
   std::cout << "3. List Of Name Wise\n";
   std::cout << choice1;
+  std::cin.ignore();
 
   switch (choice1) {
-  case 1:
-    std::cout <<"\n List Of All Files: \n";
-      
-      for (const auto& entry : hm::directory_iterator(hm::current_path())) {
-                if (hm::is_regular_file(entry.status())) {
-                    std::cout << entry.path().filename().string() << std::endl;
-      }
-      }
-break;
-case 2: 
-std::cout <<" Enter the file extension:";
-std::cin>> extension;
-std::cout << " \n List of file extension " << extension;
-     
- for (const auto& entry : hm::directory_iterator(hm::current_path())) {
+        case 1:
+            std::cout << "\nList of All Files:\n";
+            for (const auto& entry : hm::directory_iterator(hm::current_path())) {
+                std::cout << (hm::is_directory(entry.status()) ? "[DIR] " : "[FILE] ")
+                          << entry.path().filename().string() << std::endl;
+            }
+            break;
+        case 2:
+            std::cout << "Enter the file extension: ";
+            std::cin >> extension;
+            std::cout << "\nList of Files with Extension " << extension << ":\n";
+            for (const auto& entry : hm::directory_iterator(hm::current_path())) {
                 if (hm::is_regular_file(entry.status()) && entry.path().extension() == extension) {
                     std::cout << entry.path().filename().string() << std::endl;
-          }
-  }
-  break;
-case 3:
-std::cout <<" Enter the name filter:"  ;
-std::cin>> nameFilter;
-std::cout << " \n List of files with name containing " << nameFilter;
-      for (const auto& entry : hm::directory_iterator(hm::current_path())) {
-                if (hm::is_regular_file(entry.status()) && entry.path().extension() == extension) {
+                }
+            }
+            break;
+        case 3:
+            std::cout << "Enter the name filter: ";
+            std::cin >> nameFilter;
+            std::cout << "\nList of Files with Name Containing '" << nameFilter << "':\n";
+            for (const auto& entry : hm::directory_iterator(hm::current_path())) {
+                if (hm::is_regular_file(entry.status()) && entry.path().filename().string().find(nameFilter) != std::string::npos) {
                     std::cout << entry.path().filename().string() << std::endl;
-          }
-              
-  }
-  break;
-default:
-     std:: cout << "Invalid Choice!" <<std::endl;
+                }
+            }
+            break;
+        default:
+            std::cout << "Invalid Choice!" << std::endl;
+    }
 }
-  std::cout<< "Press any key to continue. ";
-}
+
 
 void createDirectory() {
     std::string dirName;
