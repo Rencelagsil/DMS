@@ -60,7 +60,7 @@ void displayFiles() {
     std::cout << "3. List Files by Name\n";
     std::cout << "Enter your choice: ";
     std::cin >> choice1;
-    std::cin.ignore(); // To clear the input buffer
+    std::cin.ignore(); 
 
     switch (choice1) {
         case 1:
@@ -106,7 +106,7 @@ void createDirectory() {
         std::cout << "Failed to create directory. It may already exist or you don't have permission." << std::endl;
     }
 
-    displayFiles(); // Automatically display the updated list of files and directories after creation
+    displayFiles(); 
 }
 
 void changeDirectory() {
