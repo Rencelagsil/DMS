@@ -94,17 +94,17 @@ void displayFiles(){
     }
 }
 
-
 void createDirectory() {
     std::string dirName;
     std::cout << "Enter the Directory name: ";
     std::cin >> dirName;
 
     if (hm::create_directory(dirName)) {
-        std::cout << dirName << " Directory Successfully Created." << std::endl;
+        std::cout << std::cout << "Directory '" << dirName << "' successfully created." << std::endl;
     } else {
         std::cout << "Failed to create directory. It may already exist or you don't have permission." << std::endl;
 }
+  displayFiles();
 }
 
 void changeDirectory() {
@@ -119,23 +119,22 @@ void changeDirectory() {
     std::cout << "3. Forward Directory\n";
     std::cout << "Enter the Number: ";
     std::cin >> choice2;
+    std::cin.ignore();
 
     switch(choice2) {
-
    case 1:
-      if (currentDir.has_parent_path()) {
-          hm::current_path(currentDir.parent_path());
-            std::cout << "Moved one directory back to: " << hm::current_path().string() << std::endl;
-      } else {
-       std::cout << "Already at the root directory." << std::endl;
-      }
+      case 1:
+            if (currentDir.has_parent_path()) {
+                hm::current_path(currentDir.parent_path());
+                std::cout << "Moved one directory back to: " << hm::current_path().string() << std::endl;
+            } else {
+                std::cout << "Already at the root directory." << std::endl;
+            }
       break;
-
    case 2:
-      hm::current_path(currentDir.root_path());
-        std::cout << "Moved to root directory: " << hm::current_path().string() << std::endl;
-      break;
-
+            hm::current_path(currentDir.root_path());
+            std::cout << "Moved to root directory: " << hm::current_path().string() << std::endl;
+            break;
     case 3:
       std::cout << "Please enter the Directory Name: ";
       std::cin >> dirName;
@@ -149,7 +148,5 @@ void changeDirectory() {
 
   default:
       std::cout << "Invalid choice!" << std::endl;
-}
-   
-    std::cout << "Press any to continue.";
+    }
 }
