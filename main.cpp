@@ -100,7 +100,7 @@ void createDirectory() {
     std::cin >> dirName;
 
     if (hm::create_directory(dirName)) {
-        std::cout << std::cout << "Directory '" << dirName << "' successfully created." << std::endl;
+        std::cout << "Directory '" << dirName << "' successfully created." << std::endl;
     } else {
         std::cout << "Failed to create directory. It may already exist or you don't have permission." << std::endl;
 }
@@ -123,7 +123,6 @@ void changeDirectory() {
 
     switch(choice2) {
    case 1:
-      case 1:
             if (currentDir.has_parent_path()) {
                 hm::current_path(currentDir.parent_path());
                 std::cout << "Moved one directory back to: " << hm::current_path().string() << std::endl;
