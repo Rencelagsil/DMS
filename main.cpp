@@ -97,56 +97,56 @@ void displayFiles() {
 
 void createDirectory() {
     std::string dirName;
-    std::cout << "Enter the Directory name: ";
+    std::cout << "Enter the directory name: ";
     std::cin >> dirName;
 
     if (hm::create_directory(dirName)) {
         std::cout << "Directory '" << dirName << "' successfully created." << std::endl;
     } else {
         std::cout << "Failed to create directory. It may already exist or you don't have permission." << std::endl;
-}
-  displayFiles();
+    }
+
+    displayFiles(); // Automatically display the updated list of files and directories after creation
 }
 
 void changeDirectory() {
-   int choice2;
+    int choice2;
     std::string dirName;
     hm::path currentDir = hm::current_path();
 
     std::cout << "Current Directory: " << currentDir.string() << std::endl;
     std::cout << "\nChange Directory\n";
-    std::cout << "1. Step by Step Backward\n";
-    std::cout << "2. Goto Root Directory\n";
-    std::cout << "3. Forward Directory\n";
-    std::cout << "Enter the Number: ";
+    std::cout << "1. Step Backward\n";
+    std::cout << "2. Go to Root Directory\n";
+    std::cout << "3. Move to Forward Directory\n";
+    std::cout << "Enter your choice: ";
     std::cin >> choice2;
     std::cin.ignore();
 
-    switch(choice2) {
-   case 1:
+    switch (choice2) {
+        case 1:
             if (currentDir.has_parent_path()) {
                 hm::current_path(currentDir.parent_path());
                 std::cout << "Moved one directory back to: " << hm::current_path().string() << std::endl;
             } else {
                 std::cout << "Already at the root directory." << std::endl;
             }
-      break;
-   case 2:
+            break;
+        case 2:
             hm::current_path(currentDir.root_path());
             std::cout << "Moved to root directory: " << hm::current_path().string() << std::endl;
             break;
-    case 3:
-      std::cout << "Please enter the Directory Name: ";
-      std::cin >> dirName;
-        if (hm::exists(dirName) && hm::is_directory(dirName)) {
-             hm::current_path(dirName);
-              std::cout << "Moved to directory: " << hm::current_path().string() << std::endl;
-        } else {
-            std::cout << "Directory does not exist." << std::endl;
-          }
-        break;
-
-  default:
-      std::cout << "Invalid choice!" << std::endl;
+        case 3:
+            std::cout << "Enter the directory name: ";
+            std::cin >> dirName;
+            if (hm::exists(dirName) && hm::is_directory(dirName)) {
+                hm::current_path(dirName);
+                std::cout << "Moved to directory: " << hm::current_path().string() << std::endl;
+            } else {
+                std::cout << "Directory does not exist." << std::endl;
+            }
+            break;
+        default:
+            std::cout << "Invalid choice!" << std::endl;
     }
 }
